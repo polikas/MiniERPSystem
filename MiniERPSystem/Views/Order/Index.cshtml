@@ -15,8 +15,8 @@
         {
             <tr>
                 <td>@order.OrderDate.ToString("yyyy-MM-dd")</td>
-                <td>@order.Customer?.Name ?? "No Customer Assigned"</td>
-                <td>@order.Products?.Count ?? 0</td>
+                <td>@(order.Customer != null ? order.Customer.Name : "No Customer Assigned")</td>
+                <td>@(order.Products != null && order.Products.Any() ? order.Products.Count : 0)</td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@order.Id" class="btn btn-warning btn-sm">Edit</a>
                     <a asp-action="Delete" asp-route-id="@order.Id" class="btn btn-danger btn-sm">Delete</a>

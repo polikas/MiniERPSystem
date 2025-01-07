@@ -25,8 +25,9 @@ namespace MiniERPSystem.Controllers
 
         public IActionResult Create()
         {
-            ViewData["Customers"] = new SelectList(_context.Customers, "Id", "Name");
-            return View();
+            var customers = _context.Customers.ToList();
+            ViewData["Customers"] = new SelectList(customers, "Id", "Name");
+            return View(new Order());
         }
         [HttpPost]
         public async Task<IActionResult> Create(Order order)
@@ -37,7 +38,9 @@ namespace MiniERPSystem.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Customers"] = new SelectList(_context.Customers, "Id", "Name", order.Customer?.Id);
+
+            var customers = _context.Customers.ToList();
+            ViewData["Customers"] = new SelectList(customers, "Id", "Name", order.CustomerId);
             return View(order);
         }
 

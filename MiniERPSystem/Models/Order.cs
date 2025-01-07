@@ -8,6 +8,8 @@ namespace MiniERPSystem.Models
         [Required]
         public DateTime OrderDate { get; set; } = DateTime.Now;
         public List<Product>? Products { get; set; }
+        [Required]
+        public int CustomerId { get; set; }
         public Customer? Customer { get; set; }
     }
 }

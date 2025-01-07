@@ -5,17 +5,19 @@
 <form method="post">
     <div class="form-group">
         <label for="OrderDate">Order Date</label>
-        <input type="date" class="form-control" id="OrderDate" name="OrderDate" value="@Model.OrderDate.ToString("yyyy-MM-dd")" required />
+        <input type="date" class="form-control" id="OrderDate" name="OrderDate" 
+               value="@Model.OrderDate.ToString("yyyy-MM-dd")" required />
     </div>
+
     <div class="form-group">
         <label for="CustomerId">Customer</label>
         <select id="CustomerId" name="CustomerId" class="form-control" required>
             <option value="">Select a Customer</option>
             @foreach (var customer in (SelectList)ViewData["Customers"])
             {
-                if (customer.Value == Model.Customer?.Id.ToString())
+                if (customer.Value == Model.CustomerId.ToString())
                 {
-                    <option value="@customer.Value" selected>@customer.Text</option>
+                    <option value="@customer.Value" selected="selected">@customer.Text</option>
                 }
                 else
                 {
@@ -24,6 +26,6 @@
             }
         </select>
     </div>
-    <!-- Products should be selected in a similar manner (you can add a multiple select or another approach) -->
+
     <button type="submit" class="btn btn-primary">Create Order</button>
 </form>
