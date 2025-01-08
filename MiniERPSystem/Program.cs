@@ -3,6 +3,7 @@ using MiniERPSystem.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// need to finish order views, edit and actions in controller maybe
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ERPDbContext>(
